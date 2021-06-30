@@ -39,6 +39,7 @@ namespace car_stereo_world
 
             //Configure services
             services.AddTransient<ComponentsService>();
+            services.AddTransient<ComponentSeriesService>();
 
 
             services.AddSwaggerGen(c =>

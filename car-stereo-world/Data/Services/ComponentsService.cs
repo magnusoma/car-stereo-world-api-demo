@@ -30,7 +30,8 @@ namespace car_stereo_world.Data.Services
                 Value60 = component.Value60,
                 Value40 = component.Value40,
                 Value20 = component.Value20,
-                Description = component.Description
+                Description = component.Description,
+                ComponentSeriesId = component.ComponentSeriesId
 
             };
 
@@ -38,11 +39,40 @@ namespace car_stereo_world.Data.Services
             _context.SaveChanges();
         }
 
-        public List<Component> GetAllComponents() => _context.Components.ToList();
-
-        public Component GetComponentById(int componentId)
+        public List<ComponentWithComponentSeriesVM> GetAllComponents() => _context.Components.Select(component => new ComponentWithComponentSeriesVM()
         {
-            var _component = _context.Components.FirstOrDefault(n => n.Id == componentId);
+            Name = component.Name,
+            Model = component.Model,
+            AvailableFrom = component.AvailableFrom,
+            AvailableUntil = component.AvailableUntil,
+            PriceNew = component.PriceNew,
+            Value100 = component.Value100,
+            Value80 = component.Value80,
+            Value60 = component.Value60,
+            Value40 = component.Value40,
+            Value20 = component.Value20,
+            Description = component.Description,
+            ComponentSeries = component.ComponentSeries.Name
+        }).ToList();
+
+        public ComponentWithComponentSeriesVM GetComponentById(int componentId)
+        {
+            var _component = _context.Components.Where(n => n.Id == componentId).Select(component => new ComponentWithComponentSeriesVM()
+            {
+                Name = component.Name,
+                Model = component.Model,
+                AvailableFrom = component.AvailableFrom,
+                AvailableUntil = component.AvailableUntil,
+                PriceNew = component.PriceNew,
+                Value100 = component.Value100,
+                Value80 = component.Value80,
+                Value60 = component.Value60,
+                Value40 = component.Value40,
+                Value20 = component.Value20,
+                Description = component.Description,
+                ComponentSeries = component.ComponentSeries.Name
+            }).FirstOrDefault();
+
             return _component;
         }
 
@@ -62,6 +92,7 @@ namespace car_stereo_world.Data.Services
                 _component.Value40 = component.Value40;
                 _component.Value20 = component.Value20;
                 _component.Description = component.Description;
+                _component.ComponentSeriesId = component.ComponentSeriesId;
 
                 _context.SaveChanges();
             }
