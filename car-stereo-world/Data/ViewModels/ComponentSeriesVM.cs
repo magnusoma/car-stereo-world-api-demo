@@ -19,6 +19,6 @@ namespace car_stereo_world.Data.ViewModels
         public string BrandName { get; set; }
         public DateTime ProducedFrom { get; set; }
         public DateTime? ProducedUntil { get; set; }
-        public List<ComponentVM> Components { get; set; }
+        public List<ComponentWithoutComponentSeriesIdVM> Components { get; set; }
     }
 }

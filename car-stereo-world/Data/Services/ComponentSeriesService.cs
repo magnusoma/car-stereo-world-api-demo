@@ -37,7 +37,7 @@ namespace car_stereo_world.Data.Services
                 BrandName = componentSeries.Brand.Name,
                 ProducedFrom = componentSeries.ProducedFrom,
                 ProducedUntil = componentSeries.ProducedUntil,
-                Components = componentSeries.Components.Select(component => new ComponentVM()
+                Components = componentSeries.Components.Select(component => new ComponentWithoutComponentSeriesIdVM()
                 {
                     Name = component.Name,
                     Model = component.Model,
@@ -49,8 +49,7 @@ namespace car_stereo_world.Data.Services
                     Value60 = component.Value60,
                     Value40 = component.Value40,
                     Value20 = component.Value20,
-                    Description = component.Description,
-                    ComponentSeriesId = componentSeriesId
+                    Description = component.Description
                 }).ToList()
             }).FirstOrDefault();
 
