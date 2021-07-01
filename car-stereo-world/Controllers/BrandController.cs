@@ -26,5 +26,12 @@ namespace car_stereo_world.Controllers
             _brandsService.AddBrand(brand);
             return Ok();
         }
+
+        [HttpGet("get-brand-with-component-series/{id}")]
+        public IActionResult GetBrandWithComponentSeries(int id)
+        {
+            var brandWithComponentSeries = _brandsService.GetBrandWithComponentSeries(id);
+            return Ok(brandWithComponentSeries);
+        }
     }
 }

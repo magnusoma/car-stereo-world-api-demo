@@ -29,14 +29,16 @@ namespace car_stereo_world.Data.Services
             _context.SaveChanges();
         }
 
-        public ComponentSeriesWithComponentsVM GetComponentSeriesById(int componentSeriesId)
+        public ComponentSeriesWithBrandAndComponentsVM GetComponentSeriesById(int componentSeriesId)
         {
-            var _componentSeries = _context.ComponentSeries.Where(n => n.Id == componentSeriesId).Select(componentSeries => new ComponentSeriesWithComponentsVM()
+            var _componentSeries = _context.ComponentSeries.Where(n => n.Id == componentSeriesId).Select(componentSeries => new ComponentSeriesWithBrandAndComponentsVM()
             {
                 Name = componentSeries.Name,
                 BrandName = componentSeries.Brand.Name,
                 ProducedFrom = componentSeries.ProducedFrom,
                 ProducedUntil = componentSeries.ProducedUntil,
+                
+                //Creating list with components
                 Components = componentSeries.Components.Select(component => new ComponentWithoutComponentSeriesIdVM()
                 {
                     Name = component.Name,
