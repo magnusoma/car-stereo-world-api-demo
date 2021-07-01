@@ -14,8 +14,8 @@ namespace car_stereo_world.Data
 
         }
 
-        /*public DbSet<Area> Areas { get; set; }
-        public DbSet<Brand> Brands { get; set; }*/
+        /*public DbSet<Area> Areas { get; set; }*/
+        public DbSet<Brand> Brands { get; set; }
         public DbSet<Component> Components { get; set; }
         public DbSet<ComponentSeries> ComponentSeries { get; set; }        
         /*public DbSet<ComponentPicture> ComponentPictures { get; set; }

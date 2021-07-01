@@ -22,7 +22,8 @@ namespace car_stereo_world.Data.Services
             {
                 Name = componentSeries.Name,
                 ProducedFrom = componentSeries.ProducedFrom,
-                ProducedUntil = componentSeries.ProducedUntil
+                ProducedUntil = componentSeries.ProducedUntil,
+                BrandId = componentSeries.BrandId
             };
             _context.ComponentSeries.Add(_componentSeries);
             _context.SaveChanges();
@@ -33,6 +34,7 @@ namespace car_stereo_world.Data.Services
             var _componentSeries = _context.ComponentSeries.Where(n => n.Id == componentSeriesId).Select(componentSeries => new ComponentSeriesWithComponentsVM()
             {
                 Name = componentSeries.Name,
+                BrandName = componentSeries.Brand.Name,
                 ProducedFrom = componentSeries.ProducedFrom,
                 ProducedUntil = componentSeries.ProducedUntil,
                 Components = componentSeries.Components.Select(component => new ComponentVM()
@@ -50,8 +52,7 @@ namespace car_stereo_world.Data.Services
                     Description = component.Description,
                     ComponentSeriesId = componentSeriesId
                 }).ToList()
-        }).FirstOrDefault();
-            //book.Book_Authors.Select(n => n.Author.FullName).ToList()
+            }).FirstOrDefault();
 
             return _componentSeries;
         }

@@ -13,8 +13,8 @@ namespace car_stereo_world.Data.Models
         public DateTime? ProducedUntil { get; set; }
 
         //Navigation props
-        //public int BrandId { get; set; }
-        //public Brand Brand { get; set; }
+        public int BrandId { get; set; }
+        public Brand Brand { get; set; }
         //public int AreaId { get; set; }
         //public Area Area { get; set; }
         public List<Component> Components { get; set; }
