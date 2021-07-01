@@ -42,6 +42,7 @@ namespace car_stereo_world.Data.Services
         public List<ComponentWithComponentSeriesVM> GetAllComponents() => _context.Components.Select(component => new ComponentWithComponentSeriesVM()
         {
             Name = component.Name,
+            BrandName = component.ComponentSeries.Brand.Name,
             Model = component.Model,
             AvailableFrom = component.AvailableFrom,
             AvailableUntil = component.AvailableUntil,
@@ -60,6 +61,7 @@ namespace car_stereo_world.Data.Services
             var _component = _context.Components.Where(n => n.Id == componentId).Select(component => new ComponentWithComponentSeriesVM()
             {
                 Name = component.Name,
+                BrandName = component.ComponentSeries.Brand.Name,
                 Model = component.Model,
                 AvailableFrom = component.AvailableFrom,
                 AvailableUntil = component.AvailableUntil,

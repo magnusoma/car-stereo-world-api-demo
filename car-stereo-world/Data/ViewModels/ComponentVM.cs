@@ -39,6 +39,7 @@ namespace car_stereo_world.Data.ViewModels
     public class ComponentWithComponentSeriesVM
     {
         public string Name { get; set; }
+        public string BrandName { get; set; }
         public string Model { get; set; }
         public DateTime AvailableFrom { get; set; }
         public DateTime? AvailableUntil { get; set; }
