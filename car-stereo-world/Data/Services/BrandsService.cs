@@ -29,6 +29,35 @@ namespace car_stereo_world.Data.Services
             _context.SaveChanges();
         }
 
+
+        public BrandWithComponentsVM GetBrandWithComponents(int brandId)
+        {
+            var _brand = _context.Brands.Where(n => n.Id == brandId).Select(brand => new BrandWithComponentsVM()
+            {
+                Name = brand.Name,
+
+                //Creating list with components
+                //Ikke opptimalt, burde hatt fk til brand i component tabellen
+                Components = _context.Components.Where(n => n.ComponentSeries.BrandId == brandId).Select(component => new ComponentWithComponentSeriesVM()
+                {
+                    Name = component.Name,
+                    BrandName = brand.Name,
+                    Model = component.Model,
+                    AvailableFrom = component.AvailableFrom,
+                    AvailableUntil = component.AvailableUntil,
+                    PriceNew = component.PriceNew,
+                    Value100 = component.Value100,
+                    Value80 = component.Value80,
+                    Value60 = component.Value60,
+                    Value40 = component.Value40,
+                    Value20 = component.Value20,
+                    Description = component.Description,
+                    ComponentSeries = component.ComponentSeries.Name
+                }).ToList()
+            }).FirstOrDefault();
+
+            return _brand;
+        }
         public BrandWithComponentSeriesVM GetBrandWithComponentSeries(int brandId)
         {
             var _brand = _context.Brands.Where(n => n.Id == brandId).Select(brand => new BrandWithComponentSeriesVM()
