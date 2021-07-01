@@ -10,6 +10,13 @@ namespace car_stereo_world.Data.ViewModels
         public string Name { get; set; }
         public DateTime ProducedFrom { get; set; }
         public DateTime? ProducedUntil { get; set; }
-        //public List<Component> Components { get; set; }
+    }
+
+    public class ComponentSeriesWithComponentsVM
+    {
+        public string Name { get; set; }
+        public DateTime ProducedFrom { get; set; }
+        public DateTime? ProducedUntil { get; set; }
+        public List<ComponentVM> Components { get; set; }
     }
 }

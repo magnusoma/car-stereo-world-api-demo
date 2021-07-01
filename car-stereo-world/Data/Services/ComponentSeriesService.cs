@@ -27,5 +27,33 @@ namespace car_stereo_world.Data.Services
             _context.ComponentSeries.Add(_componentSeries);
             _context.SaveChanges();
         }
+
+        public ComponentSeriesWithComponentsVM GetComponentSeriesById(int componentSeriesId)
+        {
+            var _componentSeries = _context.ComponentSeries.Where(n => n.Id == componentSeriesId).Select(componentSeries => new ComponentSeriesWithComponentsVM()
+            {
+                Name = componentSeries.Name,
+                ProducedFrom = componentSeries.ProducedFrom,
+                ProducedUntil = componentSeries.ProducedUntil,
+                Components = componentSeries.Components.Select(component => new ComponentVM()
+                {
+                    Name = component.Name,
+                    Model = component.Model,
+                    AvailableFrom = component.AvailableFrom,
+                    AvailableUntil = component.AvailableUntil,
+                    PriceNew = component.PriceNew,
+                    Value100 = component.Value100,
+                    Value80 = component.Value80,
+                    Value60 = component.Value60,
+                    Value40 = component.Value40,
+                    Value20 = component.Value20,
+                    Description = component.Description,
+                    ComponentSeriesId = componentSeriesId
+                }).ToList()
+        }).FirstOrDefault();
+            //book.Book_Authors.Select(n => n.Author.FullName).ToList()
+
+            return _componentSeries;
+        }
     }
 }

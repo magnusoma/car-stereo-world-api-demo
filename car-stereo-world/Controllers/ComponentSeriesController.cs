@@ -20,6 +20,13 @@ namespace car_stereo_world.Controllers
             _componentSeriesService = componentSeriesService;
         }
 
+        [HttpGet("get-component-series-by-id/{id}")]
+        public IActionResult GetComponentSeriesById(int id)
+        {
+            var ComponentSeries = _componentSeriesService.GetComponentSeriesById(id);
+            return Ok(ComponentSeries);
+        }
+
         [HttpPost("add-componentSeries")]
         public IActionResult AddComponentSeries([FromBody] ComponentSeriesVM componentSeries)
         {
