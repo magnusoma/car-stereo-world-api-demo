@@ -13,6 +13,14 @@ namespace car_stereo_world_api_demo.Data.ViewModels
         public int BrandId { get; set; }
     }
 
+    public class ComponentSeriesWithBrandVM
+    {
+        public string Name { get; set; }
+        public DateTime ProducedFrom { get; set; }
+        public DateTime? ProducedUntil { get; set; }
+        public string BrandName { get; set; }
+    }
+
     public class ComponentSeriesWithComponentsVM
     {
         public string Name { get; set; }

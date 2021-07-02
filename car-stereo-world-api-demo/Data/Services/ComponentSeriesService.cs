@@ -29,6 +29,15 @@ namespace car_stereo_world_api_demo.Data.Services
             _context.SaveChanges();
         }
 
+        public List<ComponentSeriesWithBrandVM> GetComponentSeriesList() => _context.ComponentSeries.Select(componentSeries => new ComponentSeriesWithBrandVM()
+        {
+            Name = componentSeries.Name,
+            ProducedFrom = componentSeries.ProducedFrom,
+            ProducedUntil = componentSeries.ProducedUntil,
+            BrandName = componentSeries.Brand.Name
+
+        }).ToList();
+
         public ComponentSeriesWithBrandAndComponentsVM GetComponentSeriesById(int componentSeriesId)
         {
             var _componentSeries = _context.ComponentSeries.Where(n => n.Id == componentSeriesId).Select(componentSeries => new ComponentSeriesWithBrandAndComponentsVM()

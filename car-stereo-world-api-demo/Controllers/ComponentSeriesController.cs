@@ -27,6 +27,13 @@ namespace car_stereo_world_api_demo.Controllers
             return Ok(ComponentSeries);
         }
 
+        [HttpGet("get-component-series-list")]
+        public IActionResult GetComponentSeriesList()
+        {
+            var componentSeriesList = _componentSeriesService.GetComponentSeriesList();
+            return Ok(componentSeriesList);
+        }
+
         [HttpPost("add-componentSeries")]
         public IActionResult AddComponentSeries([FromBody] ComponentSeriesVM componentSeries)
         {
