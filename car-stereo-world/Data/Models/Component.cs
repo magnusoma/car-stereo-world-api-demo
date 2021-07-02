@@ -21,7 +21,9 @@ namespace car_stereo_world.Data.Models
         public string Description { get; set; }
 
         //Navigation props
-        public int ComponentSeriesId { get; set; }
+        public int BrandId { get; set; }
+        public Brand Brand { get; set; }
+        public int? ComponentSeriesId { get; set; }
         public ComponentSeries ComponentSeries { get; set; }
         /*public int AreaId { get; set; }
         public Area Area { get; set; }

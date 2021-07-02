@@ -18,10 +18,11 @@ namespace car_stereo_world.Data.ViewModels
         public double Value40 { get; set; }
         public double Value20 { get; set; }
         public string Description { get; set; }
-        public int ComponentSeriesId { get; set; }
+        public int BrandId { get; set; }
+        public int? ComponentSeriesId { get; set; }
     }
 
-    public class ComponentWithoutComponentSeriesIdVM
+    public class ComponentWithoutFKsVM
     {
         public string Name { get; set; }
         public string Model { get; set; }
@@ -36,7 +37,7 @@ namespace car_stereo_world.Data.ViewModels
         public string Description { get; set; }
     }
 
-    public class ComponentWithComponentSeriesVM
+    public class ComponentWithBrandAndComponentSeriesVM
     {
         public string Name { get; set; }
         public string BrandName { get; set; }

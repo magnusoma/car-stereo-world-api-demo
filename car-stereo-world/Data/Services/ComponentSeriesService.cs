@@ -39,7 +39,7 @@ namespace car_stereo_world.Data.Services
                 ProducedUntil = componentSeries.ProducedUntil,
                 
                 //Creating list with components
-                Components = componentSeries.Components.Select(component => new ComponentWithoutComponentSeriesIdVM()
+                Components = componentSeries.Components.Select(component => new ComponentWithoutFKsVM()
                 {
                     Name = component.Name,
                     Model = component.Model,

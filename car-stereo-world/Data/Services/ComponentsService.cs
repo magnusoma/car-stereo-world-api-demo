@@ -39,10 +39,11 @@ namespace car_stereo_world.Data.Services
             _context.SaveChanges();
         }
 
-        public List<ComponentWithComponentSeriesVM> GetAllComponents() => _context.Components.Select(component => new ComponentWithComponentSeriesVM()
+        public List<ComponentWithBrandAndComponentSeriesVM> GetAllComponents() => 
+            _context.Components.Select(component => new ComponentWithBrandAndComponentSeriesVM()
         {
             Name = component.Name,
-            BrandName = component.ComponentSeries.Brand.Name,
+            BrandName = component.Brand.Name,
             Model = component.Model,
             AvailableFrom = component.AvailableFrom,
             AvailableUntil = component.AvailableUntil,
@@ -56,12 +57,12 @@ namespace car_stereo_world.Data.Services
             ComponentSeries = component.ComponentSeries.Name
         }).ToList();
 
-        public ComponentWithComponentSeriesVM GetComponentById(int componentId)
+        public ComponentWithBrandAndComponentSeriesVM GetComponentById(int componentId)
         {
-            var _component = _context.Components.Where(n => n.Id == componentId).Select(component => new ComponentWithComponentSeriesVM()
+            var _component = _context.Components.Where(n => n.Id == componentId).Select(component => new ComponentWithBrandAndComponentSeriesVM()
             {
                 Name = component.Name,
-                BrandName = component.ComponentSeries.Brand.Name,
+                BrandName = component.Brand.Name,
                 Model = component.Model,
                 AvailableFrom = component.AvailableFrom,
                 AvailableUntil = component.AvailableUntil,
@@ -94,6 +95,7 @@ namespace car_stereo_world.Data.Services
                 _component.Value40 = component.Value40;
                 _component.Value20 = component.Value20;
                 _component.Description = component.Description;
+                _component.BrandId = component.BrandId;
                 _component.ComponentSeriesId = component.ComponentSeriesId;
 
                 _context.SaveChanges();

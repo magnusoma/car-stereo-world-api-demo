@@ -38,7 +38,7 @@ namespace car_stereo_world.Data.Services
 
                 //Creating list with components
                 //Ikke opptimalt, burde hatt fk til brand i component tabellen
-                Components = _context.Components.Where(n => n.ComponentSeries.BrandId == brandId).Select(component => new ComponentWithComponentSeriesVM()
+                Components = brand.Components.Select(component => new ComponentWithBrandAndComponentSeriesVM()
                 {
                     Name = component.Name,
                     BrandName = brand.Name,
@@ -72,7 +72,7 @@ namespace car_stereo_world.Data.Services
                     ProducedUntil = componentSeries.ProducedUntil,
 
                     //Creating list with components
-                    Components = componentSeries.Components.Select(component => new ComponentWithoutComponentSeriesIdVM()
+                    Components = componentSeries.Components.Select(component => new ComponentWithoutFKsVM()
                     {
                         Name = component.Name,
                         Model = component.Model,
