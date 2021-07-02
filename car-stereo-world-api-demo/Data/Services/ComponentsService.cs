@@ -31,7 +31,8 @@ namespace car_stereo_world_api_demo.Data.Services
                 Value40 = component.Value40,
                 Value20 = component.Value20,
                 Description = component.Description,
-                ComponentSeriesId = component.ComponentSeriesId
+                BrandId = component.BrandId,
+                ComponentSeriesId = component.ComponentSeriesId != null ? component.ComponentSeriesId : null
 
             };
 
@@ -96,7 +97,7 @@ namespace car_stereo_world_api_demo.Data.Services
                 _component.Value20 = component.Value20;
                 _component.Description = component.Description;
                 _component.BrandId = component.BrandId;
-                _component.ComponentSeriesId = component.ComponentSeriesId;
+                _component.ComponentSeriesId = component.ComponentSeriesId != null ? component.ComponentSeriesId : null;
 
                 _context.SaveChanges();
             }
