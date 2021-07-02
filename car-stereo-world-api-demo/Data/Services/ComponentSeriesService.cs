@@ -31,6 +31,7 @@ namespace car_stereo_world_api_demo.Data.Services
 
         public List<ComponentSeriesWithBrandVM> GetComponentSeriesList() => _context.ComponentSeries.Select(componentSeries => new ComponentSeriesWithBrandVM()
         {
+            Id = componentSeries.Id,
             Name = componentSeries.Name,
             ProducedFrom = componentSeries.ProducedFrom,
             ProducedUntil = componentSeries.ProducedUntil,
@@ -50,6 +51,7 @@ namespace car_stereo_world_api_demo.Data.Services
                 //Creating list with components
                 Components = componentSeries.Components.Select(component => new ComponentWithoutFKsVM()
                 {
+                    Id = component.Id,
                     Name = component.Name,
                     Model = component.Model,
                     AvailableFrom = component.AvailableFrom,

@@ -43,6 +43,7 @@ namespace car_stereo_world_api_demo.Data.Services
         public List<ComponentWithBrandAndComponentSeriesVM> GetAllComponents() => 
             _context.Components.Select(component => new ComponentWithBrandAndComponentSeriesVM()
         {
+            Id = component.Id,
             Name = component.Name,
             BrandName = component.Brand.Name,
             Model = component.Model,
@@ -62,6 +63,7 @@ namespace car_stereo_world_api_demo.Data.Services
         {
             var _component = _context.Components.Where(n => n.Id == componentId).Select(component => new ComponentWithBrandAndComponentSeriesVM()
             {
+                Id = component.Id,
                 Name = component.Name,
                 BrandName = component.Brand.Name,
                 Model = component.Model,

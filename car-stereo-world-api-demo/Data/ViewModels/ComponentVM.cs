@@ -24,6 +24,7 @@ namespace car_stereo_world_api_demo.Data.ViewModels
 
     public class ComponentWithoutFKsVM
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Model { get; set; }
         public DateTime AvailableFrom { get; set; }
@@ -39,6 +40,7 @@ namespace car_stereo_world_api_demo.Data.ViewModels
 
     public class ComponentWithBrandAndComponentSeriesVM
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string BrandName { get; set; }
         public string Model { get; set; }

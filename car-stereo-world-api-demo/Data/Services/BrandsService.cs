@@ -74,6 +74,7 @@ namespace car_stereo_world_api_demo.Data.Services
                     //Creating list with components
                     Components = componentSeries.Components.Select(component => new ComponentWithoutFKsVM()
                     {
+                        Id = component.Id,
                         Name = component.Name,
                         Model = component.Model,
                         AvailableFrom = component.AvailableFrom,
