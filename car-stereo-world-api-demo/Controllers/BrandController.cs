@@ -41,11 +41,19 @@ namespace car_stereo_world_api_demo.Controllers
             return Ok(brandWithComponents);
         }
 
+
         [HttpGet("get-brand-with-component-series/{id}")]
         public IActionResult GetBrandWithComponentSeries(int id)
         {
             var brandWithComponentSeries = _brandsService.GetBrandWithComponentSeries(id);
             return Ok(brandWithComponentSeries);
+        }
+
+        [HttpGet("get-brand-with-component-series-list/{id}")]
+        public IActionResult GetBrandWithComponentSeriesList(int id)
+        {
+            var brandWithComponentSeriesList = _brandsService.GetBrandWithComponentSeriesList(id);
+            return Ok(brandWithComponentSeriesList);
         }
     }
 }

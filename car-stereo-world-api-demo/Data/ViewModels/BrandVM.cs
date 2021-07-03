@@ -27,4 +27,11 @@ namespace car_stereo_world_api_demo.Data.ViewModels
         public string Name { get; set; }
         public List<ComponentSeriesWithComponentsVM> ComponentSeries { get; set; }
     }
+
+    public class BrandWithComponentSeriesListVM
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<ComponentSeriesListItemVM> ComponentSeries { get; set; }
+    }
 }

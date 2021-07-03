@@ -98,5 +98,27 @@ namespace car_stereo_world_api_demo.Data.Services
 
             return _brand;
         }
+
+        public BrandWithComponentSeriesListVM GetBrandWithComponentSeriesList(int brandId)
+        {
+            var _brand = _context.Brands.Where(n => n.Id == brandId).Select(brand => new BrandWithComponentSeriesListVM()
+            {
+                Id = brandId,
+                Name = brand.Name,
+
+                //Creating list with component series
+                ComponentSeries = brand.ComponentSeries.Select(componentSeries => new ComponentSeriesListItemVM()
+                {
+                    Id = componentSeries.Id,
+                    Name = componentSeries.Name,
+                    ProducedFrom = componentSeries.ProducedFrom,
+                    ProducedUntil = componentSeries.ProducedUntil,
+                    BrandId = componentSeries.BrandId,
+                    BrandName = componentSeries.Brand.Name
+                }).ToList()
+            }).FirstOrDefault();
+
+            return _brand;
+        }
     }
 }
