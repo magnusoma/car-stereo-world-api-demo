@@ -27,6 +27,13 @@ namespace car_stereo_world_api_demo.Controllers
             return Ok();
         }
 
+        [HttpGet("get-brand-list")]
+        public IActionResult GetBrandList()
+        {
+            var brandList = _brandsService.GetBrandList();
+            return Ok(brandList);
+        }
+
         [HttpGet("get-brand-with-components/{id}")]
         public IActionResult GetBrandWithComponents(int id)
         {

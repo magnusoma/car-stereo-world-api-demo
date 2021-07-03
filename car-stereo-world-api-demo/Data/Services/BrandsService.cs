@@ -29,6 +29,12 @@ namespace car_stereo_world_api_demo.Data.Services
             _context.SaveChanges();
         }
 
+        public List<BrandListItemVM> GetBrandList() => _context.Brands.Select(brand => new BrandListItemVM()
+        {
+            Id = brand.Id,
+            Name = brand.Name
+        }).ToList();
+
 
         public BrandWithComponentsVM GetBrandWithComponents(int brandId)
         {
